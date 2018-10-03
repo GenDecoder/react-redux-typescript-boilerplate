@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { TodoTextInput } from '../TodoTextInput';
+
 import { TodoActions } from 'app/actions/todos';
+import { TodoTextInput } from '../TodoTextInput';
 
 export namespace Header {
    export interface Props {
@@ -24,7 +25,7 @@ export class Header extends React.Component<Header.Props> {
       return (
          <header>
             <h1>Todos</h1>
-            <TodoTextInput newTodo onSave={this.handleSave} placeholder="What needs to be done?" />
+            <TodoTextInput newTodo={true} onSave={this.handleSave} placeholder="What needs to be done?" />
          </header>
       );
    }

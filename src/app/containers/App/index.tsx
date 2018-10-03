@@ -14,13 +14,11 @@ import * as style from './style.css';
 const FILTER_VALUES = (Object.keys(TodoModel.Filter) as (keyof typeof TodoModel.Filter)[]).map(
    key => TodoModel.Filter[key]
 );
-
 const FILTER_FUNCTIONS: Record<TodoModel.Filter, (todo: TodoModel) => boolean> = {
    [TodoModel.Filter.SHOW_ALL]: () => true,
    [TodoModel.Filter.SHOW_ACTIVE]: todo => !todo.completed,
    [TodoModel.Filter.SHOW_COMPLETED]: todo => todo.completed
 };
-
 export namespace App {
    export interface Props extends RouteComponentProps<void> {
       todos: RootState.TodoState;
@@ -28,7 +26,6 @@ export namespace App {
       filter: TodoModel.Filter;
    }
 }
-
 class App extends React.Component<App.Props> {
    static defaultProps: Partial<App.Props> = {
       filter: TodoModel.Filter.SHOW_ALL
@@ -53,7 +50,6 @@ class App extends React.Component<App.Props> {
       const activeCount = todos.length - todos.filter(todo => todo.completed).length;
       const filteredTodos = filter ? todos.filter(FILTER_FUNCTIONS[filter]) : todos;
       const completedCount = todos.reduce((count, todo) => (todo.completed ? count + 1 : count), 0);
-
       return (
          <div className={style.normal}>
             <Header addTodo={actions.addTodo} />

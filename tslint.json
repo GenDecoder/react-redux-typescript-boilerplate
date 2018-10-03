@@ -7,7 +7,7 @@
       "object-literal-sort-keys": false,
       "ordered-imports": true,
       "interface-name": false,
-      "no-console": false,
+      "no-console": true,
       "no-namespace": false
    }
 }

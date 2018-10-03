@@ -1,9 +1,11 @@
-import { Store, createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { routerMiddleware } from 'react-router-redux';
+import { applyMiddleware, createStore, Store } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 import { History } from 'history';
+
 import { logger } from 'app/middleware';
-import { RootState, rootReducer } from 'app/reducers';
+import { rootReducer, RootState } from 'app/reducers';
 
 export function configureStore(history: History, initialState?: RootState): Store<RootState> {
    let middleware = applyMiddleware(logger, routerMiddleware(history));
