@@ -6,7 +6,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { TodoActions } from 'app/actions';
 import { Footer, Header, TodoList } from 'app/components';
 import { ITodoModel, TodoModel } from 'app/models';
-import { IRootState } from 'app/reducers';
+import { IRootState, RootState } from 'app/reducers/state';
 import { omit } from 'app/utils';
 
 import * as style from './style.css';
