@@ -58,6 +58,23 @@ $ npm run build
 ```
 $ npm run prettier
 ```
+## Notes
+
+* Create an `ssh key` using **git bash**, given that the id_dsa file is the one looked by default.
+* Install globally `tslint` and `typescript`.
+* Install the plugins for `prettier` and `tslint`
+* Change tabSize to **3**.
+* Change shortcuts for `prettier` and `save all`
+
+## Important shortcuts
+
+* Prettier `ctrl shift alt p` (in vscode is format document)
+* Path in text `ctrl shift h`
+* Change all occurences `shift f6`
+
+## Useful commands
+
+* tslint -p . `run tslint in the whole project`
 
 # License
 

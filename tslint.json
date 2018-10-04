@@ -6,7 +6,7 @@
       "member-access": [true, "check-accessor", "check-constructor"],
       "object-literal-sort-keys": false,
       "ordered-imports": true,
-      "interface-name": false,
+      "interface-name": true,
       "no-console": true,
       "no-namespace": false
    }

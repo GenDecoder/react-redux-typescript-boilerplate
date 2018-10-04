@@ -20,17 +20,17 @@ const FILTER_FUNCTIONS: Record<TodoModel.Filter, (todo: TodoModel) => boolean> =
    [TodoModel.Filter.SHOW_COMPLETED]: todo => todo.completed
 };
 export namespace App {
-   export interface Props extends RouteComponentProps<void> {
+   export interface IOwnProps extends RouteComponentProps<void> {
       todos: RootState.TodoState;
       actions: TodoActions;
       filter: TodoModel.Filter;
    }
 }
-class App extends React.Component<App.Props> {
-   public static defaultProps: Partial<App.Props> = {
+class App extends React.Component<App.IOwnProps> {
+   public static defaultProps: Partial<App.IOwnProps> = {
       filter: TodoModel.Filter.SHOW_ALL
    };
-   public constructor(props: App.Props, context?: any) {
+   public constructor(props: App.IOwnProps, context?: any) {
       super(props, context);
    }
    public render() {
@@ -63,12 +63,12 @@ class App extends React.Component<App.Props> {
       this.props.history.push(`#${filter}`);
    };
 }
-const mapStateToProps = (state: RootState): Pick<App.Props, 'todos' | 'filter'> => {
+const mapStateToProps = (state: RootState): Pick<App.IOwnProps, 'todos' | 'filter'> => {
    const hash = state.router.location && state.router.location.hash.replace('#', '');
    const filter = FILTER_VALUES.find(value => value === hash) || TodoModel.Filter.SHOW_ALL;
    return { todos: state.todos, filter };
 };
-const mapDispatchToProps = (dispatch: Dispatch): Pick<App.Props, 'actions'> => ({
+const mapDispatchToProps = (dispatch: Dispatch): Pick<App.IOwnProps, 'actions'> => ({
    actions: bindActionCreators(omit(TodoActions, 'Type'), dispatch)
 });
 export default connect(
