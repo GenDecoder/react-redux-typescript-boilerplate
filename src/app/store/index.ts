@@ -5,16 +5,16 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { History } from 'history';
 
 import { logger } from 'app/middleware';
-import { rootReducer, RootState } from 'app/reducers';
+import { IRootState, rootReducer } from 'app/reducers';
 
-export function configureStore(history: History, initialState?: RootState): Store<RootState> {
+export function configureStore(history: History, initialState?: IRootState): Store<IRootState> {
    let middleware = applyMiddleware(logger, routerMiddleware(history));
 
    if (process.env.NODE_ENV !== 'production') {
       middleware = composeWithDevTools(middleware);
    }
 
-   const store = createStore(rootReducer as any, initialState as any, middleware) as Store<RootState>;
+   const store = createStore(rootReducer as any, initialState as any, middleware) as Store<IRootState>;
 
    if (module.hot) {
       module.hot.accept('app/reducers', () => {

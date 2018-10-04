@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+
 import { ITodoModel } from 'app/models';
 
 export namespace TodoActions {

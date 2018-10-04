@@ -50,7 +50,9 @@ export class TodoItem extends React.Component<TodoItem.IOwnProps, TodoItem.IStat
                <button
                   className={style.destroy}
                   onClick={() => {
-                     if (todo.id) deleteTodo(todo.id);
+                     if (todo.id) {
+                        deleteTodo(todo.id);
+                     }
                   }}
                />
             </div>

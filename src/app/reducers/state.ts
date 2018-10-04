@@ -1,7 +1,7 @@
 import { ITodoModel } from 'app/models';
 import { RouterState } from 'react-router-redux';
 
-export interface RootState {
+export interface IRootState {
    todos: RootState.TodoState;
    router: RouterState;
 }

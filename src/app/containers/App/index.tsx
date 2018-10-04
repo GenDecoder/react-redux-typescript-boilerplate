@@ -6,7 +6,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { TodoActions } from 'app/actions';
 import { Footer, Header, TodoList } from 'app/components';
 import { ITodoModel, TodoModel } from 'app/models';
-import { RootState } from 'app/reducers';
+import { IRootState } from 'app/reducers';
 import { omit } from 'app/utils';
 
 import * as style from './style.css';
@@ -63,7 +63,7 @@ class App extends React.Component<App.IOwnProps> {
       this.props.history.push(`#${filter}`);
    };
 }
-const mapStateToProps = (state: RootState): Pick<App.IOwnProps, 'todos' | 'filter'> => {
+const mapStateToProps = (state: IRootState): Pick<App.IOwnProps, 'todos' | 'filter'> => {
    const hash = state.router.location && state.router.location.hash.replace('#', '');
    const filter = FILTER_VALUES.find(value => value === hash) || TodoModel.Filter.SHOW_ALL;
    return { todos: state.todos, filter };
