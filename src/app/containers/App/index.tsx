@@ -27,25 +27,13 @@ export namespace App {
    }
 }
 class App extends React.Component<App.Props> {
-   static defaultProps: Partial<App.Props> = {
+   public static defaultProps: Partial<App.Props> = {
       filter: TodoModel.Filter.SHOW_ALL
    };
-   constructor(props: App.Props, context?: any) {
+   public constructor(props: App.Props, context?: any) {
       super(props, context);
    }
-
-   handleClearCompleted = (): void => {
-      const hasCompletedTodo = this.props.todos.some(todo => todo.completed || false);
-      if (hasCompletedTodo) {
-         this.props.actions.clearCompleted();
-      }
-   };
-
-   handleFilterChange = (filter: TodoModel.Filter): void => {
-      this.props.history.push(`#${filter}`);
-   };
-
-   render() {
+   public render() {
       const { todos, actions, filter } = this.props;
       const activeCount = todos.length - todos.filter(todo => todo.completed).length;
       const filteredTodos = filter ? todos.filter(FILTER_FUNCTIONS[filter]) : todos;
@@ -64,6 +52,16 @@ class App extends React.Component<App.Props> {
          </div>
       );
    }
+   private handleClearCompleted = (): void => {
+      const hasCompletedTodo = this.props.todos.some(todo => todo.completed || false);
+      if (hasCompletedTodo) {
+         this.props.actions.clearCompleted();
+      }
+   };
+
+   private handleFilterChange = (filter: TodoModel.Filter): void => {
+      this.props.history.push(`#${filter}`);
+   };
 }
 const mapStateToProps = (state: RootState): Pick<App.Props, 'todos' | 'filter'> => {
    const hash = state.router.location && state.router.location.hash.replace('#', '');
