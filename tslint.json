@@ -8,6 +8,7 @@
       "ordered-imports": true,
       "interface-name": true,
       "no-console": true,
-      "no-namespace": false
+      "no-namespace": false,
+      "array-type": false
    }
 }

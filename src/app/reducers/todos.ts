@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { RootState } from './state';
 import { TodoActions } from 'app/actions/todos';
-import { TodoModel } from 'app/models';
+import { ITodoModel } from 'app/models';
 
 const initialState: RootState.TodoState = [
    {
@@ -11,7 +11,7 @@ const initialState: RootState.TodoState = [
    }
 ];
 
-export const todoReducer = handleActions<RootState.TodoState, TodoModel>(
+export const todoReducer = handleActions<RootState.TodoState, ITodoModel>(
    {
       [TodoActions.Type.ADD_TODO]: (state, action) => {
          if (action.payload && action.payload.text) {

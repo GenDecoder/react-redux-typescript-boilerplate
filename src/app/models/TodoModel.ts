@@ -2,7 +2,7 @@
  * TodoMVC model definitions
  */
 
-export interface TodoModel {
+export interface ITodoModel {
    id: number;
    text: string;
    completed: boolean;

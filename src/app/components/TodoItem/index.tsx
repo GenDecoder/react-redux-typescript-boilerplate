@@ -1,43 +1,31 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
-import * as style from './style.css';
-import { TodoModel } from 'app/models';
+import * as React from 'react';
+
 import { TodoActions } from 'app/actions';
+import { ITodoModel } from 'app/models';
 import { TodoTextInput } from '../TodoTextInput';
+import * as style from './style.css';
 
 export namespace TodoItem {
-   export interface Props {
-      todo: TodoModel;
+   export interface IOwnProps {
+      todo: ITodoModel;
       editTodo: typeof TodoActions.editTodo;
       deleteTodo: typeof TodoActions.deleteTodo;
       completeTodo: typeof TodoActions.completeTodo;
    }
 
-   export interface State {
+   export interface IState {
       editing: boolean;
    }
 }
 
-export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
-   constructor(props: TodoItem.Props, context?: any) {
+export class TodoItem extends React.Component<TodoItem.IOwnProps, TodoItem.IState> {
+   public constructor(props: TodoItem.IOwnProps, context?: any) {
       super(props, context);
       this.state = { editing: false };
    }
 
-   handleDoubleClick() {
-      this.setState({ editing: true });
-   }
-
-   handleSave(id: number, text: string) {
-      if (text.length === 0) {
-         this.props.deleteTodo(id);
-      } else {
-         this.props.editTodo({ id, text });
-      }
-      this.setState({ editing: false });
-   }
-
-   render() {
+   public render() {
       const { todo, completeTodo, deleteTodo } = this.props;
 
       let element;
@@ -77,5 +65,17 @@ export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
       });
 
       return <li className={classes}>{element}</li>;
+   }
+   private handleDoubleClick() {
+      this.setState({ editing: true });
+   }
+
+   private handleSave(id: number, text: string) {
+      if (text.length === 0) {
+         this.props.deleteTodo(id);
+      } else {
+         this.props.editTodo({ id, text });
+      }
+      this.setState({ editing: false });
    }
 }

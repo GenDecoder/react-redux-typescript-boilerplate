@@ -5,7 +5,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import { TodoActions } from 'app/actions';
 import { Footer, Header, TodoList } from 'app/components';
-import { TodoModel } from 'app/models';
+import { ITodoModel, TodoModel } from 'app/models';
 import { RootState } from 'app/reducers';
 import { omit } from 'app/utils';
 
@@ -14,7 +14,7 @@ import * as style from './style.css';
 const FILTER_VALUES = (Object.keys(TodoModel.Filter) as (keyof typeof TodoModel.Filter)[]).map(
    key => TodoModel.Filter[key]
 );
-const FILTER_FUNCTIONS: Record<TodoModel.Filter, (todo: TodoModel) => boolean> = {
+const FILTER_FUNCTIONS: Record<TodoModel.Filter, (todo: ITodoModel) => boolean> = {
    [TodoModel.Filter.SHOW_ALL]: () => true,
    [TodoModel.Filter.SHOW_ACTIVE]: todo => !todo.completed,
    [TodoModel.Filter.SHOW_COMPLETED]: todo => todo.completed

@@ -1,4 +1,4 @@
-import { TodoModel } from 'app/models';
+import { ITodoModel } from 'app/models';
 import { RouterState } from 'react-router-redux';
 
 export interface RootState {
@@ -7,5 +7,5 @@ export interface RootState {
 }
 
 export namespace RootState {
-   export type TodoState = TodoModel[];
+   export type TodoState = ITodoModel[];
 }
